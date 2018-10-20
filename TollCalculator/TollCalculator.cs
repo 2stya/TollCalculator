@@ -75,11 +75,11 @@ namespace TollCalculator
             {
                 return 22;
             }
-            else if (hour == 8 && minute >= 0 && minute < 29)
+            else if (hour == 8 && minute >= 0 && minute <= 29)
             {
                 return 16;
             }
-            else if (hour >= 8 && hour <= 14 && minute >= 30 && minute <= 59)
+            else if (hour == 8 && minute >= 30 || hour > 8 && hour <= 14 && minute <= 59)
             {
                 return 9;
             }
@@ -97,7 +97,7 @@ namespace TollCalculator
             }
             else if (hour == 18 && minute >= 0 && minute <= 29)
             {
-                return 8;
+                return 9;
             }
             else
             {
