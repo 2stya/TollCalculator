@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarHelper\SwedenTollFreeDaysProviderTests.cs" />
     <Compile Include="Extensions\DateTimeExtensionsTests.cs" />
     <Compile Include="TollCalculatorTests.cs" />
     <Compile Include="VehicleTests.cs" />
