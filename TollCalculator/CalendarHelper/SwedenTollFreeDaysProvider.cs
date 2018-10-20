@@ -1,9 +1,8 @@
 ﻿using System;
-using TollCalculator.Extensions;
 
 namespace TollCalculator.CalendarHelper
 {
-    public class SwedenTollFreeDaysProvider : ITollFreeDaysProvider
+    public class SwedenTollFreeDaysProvider : TollFreeDaysProvider
     {
         public SwedenTollFreeDaysProvider(DateTime dateTime) : base(dateTime)
         {
@@ -16,19 +15,19 @@ namespace TollCalculator.CalendarHelper
 
         private bool IsWeekend()
         {
-            return _dateTime.DayOfWeek == DayOfWeek.Saturday || _dateTime.DayOfWeek == DayOfWeek.Sunday;
+            return DateTime.DayOfWeek == DayOfWeek.Saturday || DateTime.DayOfWeek == DayOfWeek.Sunday;
         }
 
         private bool IsPublicHoliday()
         {
-            if (_dateTime.Month == 1 && _dateTime.Day == 1 ||   // Nyårsdagen
-                _dateTime.Month == 1 && _dateTime.Day == 6 ||   // Trettondedag jul
-                _dateTime.Month == 5 && _dateTime.Day == 1 ||   // Första Maj
-                _dateTime.Month == 6 && _dateTime.Day == 6 ||   // Sveriges nationaldag	
-                _dateTime.Month == 12 && _dateTime.Day == 24 || // Julafton
-                _dateTime.Month == 12 && _dateTime.Day == 25 || // Juldagen
-                _dateTime.Month == 12 && _dateTime.Day == 26 || // Annandag jul	
-                IsEasterHolidays(_dateTime)                     // Långfredagen, Annandag påsk, Kristi himmelsfärds dag	
+            if (DateTime.Month == 1 && DateTime.Day == 1 ||   // Nyårsdagen
+                DateTime.Month == 1 && DateTime.Day == 6 ||   // Trettondedag jul
+                DateTime.Month == 5 && DateTime.Day == 1 ||   // Första Maj
+                DateTime.Month == 6 && DateTime.Day == 6 ||   // Sveriges nationaldag	
+                DateTime.Month == 12 && DateTime.Day == 24 || // Julafton
+                DateTime.Month == 12 && DateTime.Day == 25 || // Juldagen
+                DateTime.Month == 12 && DateTime.Day == 26 || // Annandag jul	
+                IsEasterHolidays(DateTime)                    // Långfredagen, Annandag påsk, Kristi himmelsfärds dag	
             )
             {
                 return true;

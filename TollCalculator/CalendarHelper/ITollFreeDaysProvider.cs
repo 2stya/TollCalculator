@@ -2,13 +2,13 @@
 
 namespace TollCalculator.CalendarHelper
 {
-    public abstract class ITollFreeDaysProvider
+    public abstract class TollFreeDaysProvider
     {
-        protected DateTime _dateTime;
+        protected DateTime DateTime;
 
-        protected ITollFreeDaysProvider(DateTime dateTime)
+        protected TollFreeDaysProvider(DateTime dateTime)
         {
-            _dateTime = dateTime;
+            DateTime = dateTime;
         }
 
         public abstract bool IsTollFree();
