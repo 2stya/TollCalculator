@@ -47,6 +47,16 @@ namespace TollCalculator.Tests
             Vehicle vehicle = new Vehicle(vehicleType);
 
             // Act & Assert
+            vehicle.IsTollFree.Should().BeTrue();
+        }
+
+        [Test]
+        public void IsTollFree_WhenPrivate_ShouldReturnFalse()
+        {
+            // Arrange
+            Vehicle vehicle = new Vehicle(VehicleType.Private);
+
+            // Act & Assert
             vehicle.IsTollFree.Should().BeFalse();
         }
     }

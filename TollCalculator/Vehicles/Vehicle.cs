@@ -6,7 +6,7 @@ namespace TollCalculator.Vehicles
     {
         public VehicleType VehicleType { get; }
 
-        public bool IsTollFree => Enum.IsDefined(typeof(VehiclesTollFree), "fff");
+        public bool IsTollFree => Enum.IsDefined(typeof(VehiclesTollFree), VehicleType.ToString());
 
         public Vehicle(VehicleType vehicleType)
         {
