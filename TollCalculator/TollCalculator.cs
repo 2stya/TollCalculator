@@ -66,9 +66,11 @@ namespace TollCalculator
                 return 0;
             }
 
-            int hour = date.Hour;
-            int minute = date.Minute;
+            return GetHourlyTollFee(date.Hour, date.Minute);
+        }
 
+        private static int GetHourlyTollFee(int hour, int minute)
+        {
             if (hour == 6 && minute >= 0 && minute <= 29)
             {
                 return 9;
