@@ -1,11 +1,15 @@
 using System;
+using TollCalculator.Extensions;
 using TollCalculator.Vehicles;
 
 namespace TollCalculator
 {
     public class TollCalculator
     {
-
+        public TollCalculator()
+        {
+            
+        }
         /**
      * Calculate the total toll fee for one day
      *
@@ -55,7 +59,7 @@ namespace TollCalculator
 
         private int GetTollFee(DateTime date, Vehicle vehicle)
         {
-            if (IsTollFreeDate(date) || vehicle.IsTollFree)
+            if (date.IsWeekend() || IsTollFreeDate(date) || vehicle.IsTollFree)
             {
                 return 0;
             }
@@ -110,11 +114,6 @@ namespace TollCalculator
             int year = date.Year;
             int month = date.Month;
             int day = date.Day;
-
-            if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
-            {
-                return true;
-            }
 
             if (year == 2013)
             {
