@@ -10,7 +10,7 @@ namespace TollCalculator
 
         public TollCalculator(TollFreeDaysProvider freeDaysProvider)
         {
-            _freeDaysProvider = freeDaysProvider?? new SwedenTollFreeDaysProvider();
+            _freeDaysProvider = freeDaysProvider ?? new SwedenTollFreeDaysProvider();
         }
         /**
      * Calculate the total toll fee for one day
@@ -71,45 +71,32 @@ namespace TollCalculator
 
         private static int GetHourlyTollFee(int hour, int minute)
         {
-            if (hour == 6 && minute <= 29)
+            switch (hour)
             {
-                return 9;
-            }
-            else if (hour == 6 && minute >= 30)
-            {
-                return 16;
-            }
-            else if (hour == 7)
-            {
-                return 22;
-            }
-            else if (hour == 8 && minute <= 29)
-            {
-                return 16;
-            }
-            else if (hour == 8 && minute >= 30 || hour > 8 && hour <= 14)
-            {
-                return 9;
-            }
-            else if (hour == 15 && minute <= 29)
-            {
-                return 16;
-            }
-            else if (hour == 15 && minute >= 30 || hour == 16 && minute <= 59)
-            {
-                return 22;
-            }
-            else if (hour == 17 && minute <= 59)
-            {
-                return 16;
-            }
-            else if (hour == 18 && minute <= 29)
-            {
-                return 9;
-            }
-            else
-            {
-                return 0;
+                case 6 when minute <= 29:
+                case 8 when minute >= 30:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 18 when minute <= 29:
+                    return 9;
+
+                case 6 when minute >= 30:
+                case 8 when minute <= 29:
+                case 15 when minute <= 29:
+                case 17 when minute <= 59:
+                    return 16;
+
+                case 7:
+                case 15 when minute >= 30:
+                case 16 when minute <= 59:
+                    return 22;
+
+                default:
+                    return 0;
             }
         }
 
