@@ -4,6 +4,7 @@ using TollCalculator.Vehicles;
 
 namespace TollCalculator.Tests
 {
+    [TestFixture]
     public class VehicleTests
     {
         [Test]
