@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="CalendarHelper\ITollFreeDaysProvider.cs" />
     <Compile Include="CalendarHelper\SwedenTollFreeDaysProvider.cs" />
-    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TollCalculator.cs" />
     <Compile Include="Vehicles\Vehicle.cs" />

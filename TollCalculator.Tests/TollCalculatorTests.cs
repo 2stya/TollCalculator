@@ -208,20 +208,6 @@ namespace TollCalculator.Tests
         }
 
         [Test]
-        public void GetTollFee_WhenPrivateCarOnPublicHoliday_ShouldReturn0()
-        {
-            // Arrange
-            TollCalculator calc = new TollCalculator();
-
-            // Act
-            DateTime[] oncePassingDateTime = { DateTime.Parse("11/01/2013 12:30", CultureInfo.InvariantCulture) };
-            int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
-
-            // Assert
-            tollFee.Should().Be(0);
-        }
-
-        [Test]
         public void GetTollFee_WhenPrivateCarNotHolidayALotOfPasses_ShouldReturn60()
         {
             // Arrange
