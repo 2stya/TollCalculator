@@ -43,7 +43,7 @@ namespace TollCalculator
 
         public int GetTollFee(DateTime date, Vehicle vehicle)
         {
-            if (IsTollFreeDate(date) || IsTollFreeVehicle(vehicle)) return 0;
+            if (IsTollFreeDate(date) || vehicle.IsTollFree) return 0;
 
             int hour = date.Hour;
             int minute = date.Minute;
@@ -58,16 +58,6 @@ namespace TollCalculator
             else if (hour == 17 && minute >= 0 && minute <= 59) return 16;
             else if (hour == 18 && minute >= 0 && minute <= 29) return 8;
             else return 0;
-        }
-
-        private bool IsTollFreeVehicle(Vehicle vehicle)
-        {
-            if (vehicle == null)
-            {
-                throw new ArgumentException("Vehicle shouldn't be null");
-            };
-
-            return vehicle.IsTollFree;
         }
 
         private bool IsTollFreeDate(DateTime date)
