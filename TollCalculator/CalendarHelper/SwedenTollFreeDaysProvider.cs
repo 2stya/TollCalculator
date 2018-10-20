@@ -4,36 +4,26 @@ namespace TollCalculator.CalendarHelper
 {
     public class SwedenTollFreeDaysProvider : TollFreeDaysProvider
     {
-        public SwedenTollFreeDaysProvider(DateTime dateTime) : base(dateTime)
+        public override bool IsTollFree(DateTime date)
         {
+            return IsWeekend(date) || IsPublicHoliday(date);
         }
 
-        public override bool IsTollFree()
+        private bool IsWeekend(DateTime date)
         {
-            return IsWeekend() || IsPublicHoliday();
+            return date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
         }
 
-        private bool IsWeekend()
+        private bool IsPublicHoliday(DateTime date)
         {
-            return DateTime.DayOfWeek == DayOfWeek.Saturday || DateTime.DayOfWeek == DayOfWeek.Sunday;
-        }
-
-        private bool IsPublicHoliday()
-        {
-            if (DateTime.Month == 1 && DateTime.Day == 1 ||   // Nyårsdagen
-                DateTime.Month == 1 && DateTime.Day == 6 ||   // Trettondedag jul
-                DateTime.Month == 5 && DateTime.Day == 1 ||   // Första Maj
-                DateTime.Month == 6 && DateTime.Day == 6 ||   // Sveriges nationaldag	
-                DateTime.Month == 12 && DateTime.Day == 24 || // Julafton
-                DateTime.Month == 12 && DateTime.Day == 25 || // Juldagen
-                DateTime.Month == 12 && DateTime.Day == 26 || // Annandag jul	
-                IsEasterHolidays(DateTime)                    // Långfredagen, Annandag påsk, Kristi himmelsfärds dag	
-            )
-            {
-                return true;
-            }
-
-            return false;
+            return date.Month == 1 && date.Day == 1 ||   // Nyårsdagen
+                   date.Month == 1 && date.Day == 6 ||   // Trettondedag jul
+                   date.Month == 5 && date.Day == 1 ||   // Första Maj
+                   date.Month == 6 && date.Day == 6 ||   // Sveriges nationaldag	
+                   date.Month == 12 && date.Day == 24 || // Julafton
+                   date.Month == 12 && date.Day == 25 || // Juldagen
+                   date.Month == 12 && date.Day == 26 || // Annandag jul	
+                   IsEasterHolidays(date);
         }
 
         private bool IsEasterHolidays(DateTime dateTime)

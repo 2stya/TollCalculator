@@ -1,14 +1,16 @@
 using System;
-using TollCalculator.Extensions;
+using TollCalculator.CalendarHelper;
 using TollCalculator.Vehicles;
 
 namespace TollCalculator
 {
     public class TollCalculator
     {
-        public TollCalculator()
+        private readonly TollFreeDaysProvider _freeDaysProvider;
+
+        public TollCalculator(TollFreeDaysProvider freeDaysProvider)
         {
-            
+            _freeDaysProvider = freeDaysProvider?? new SwedenTollFreeDaysProvider();
         }
         /**
      * Calculate the total toll fee for one day
@@ -59,7 +61,7 @@ namespace TollCalculator
 
         private int GetTollFee(DateTime date, Vehicle vehicle)
         {
-            if (date.IsWeekend() || IsTollFreeDate(date) || vehicle.IsTollFree)
+            if (_freeDaysProvider.IsTollFree(date) || vehicle.IsTollFree)
             {
                 return 0;
             }
