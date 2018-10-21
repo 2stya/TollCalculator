@@ -72,12 +72,13 @@ namespace TollCalculator
                 {
                     totalFee += nextFee;
                 }
-            }
-            if (totalFee > 60)
-            {
-                return 60;
-            }
 
+                if (totalFee > 60)
+                {
+                    return 60;
+                }
+            }
+            
             return totalFee;
         }
 
