@@ -257,13 +257,16 @@ namespace TollCalculator.Tests
 
             // Act
             DateTime[] twicePassingDateTime = {
-                DateTime.Parse("07/10/2018 18:00", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 17:54", CultureInfo.InvariantCulture)
+                DateTime.Parse("07/10/2018 09:00", CultureInfo.InvariantCulture),
+                DateTime.Parse("07/10/2018 09:54", CultureInfo.InvariantCulture),
+                DateTime.Parse("07/10/2018 10:01", CultureInfo.InvariantCulture),
+                DateTime.Parse("07/10/2018 10:06", CultureInfo.InvariantCulture),
+                DateTime.Parse("07/10/2018 11:06", CultureInfo.InvariantCulture),
             };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), twicePassingDateTime);
 
             // Assert
-            tollFee.Should().Be(16);
+            tollFee.Should().Be(27);
         }
 
         [Test]
@@ -273,11 +276,11 @@ namespace TollCalculator.Tests
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = {
+            DateTime[] differentDaysPassingDateTime = {
                 DateTime.Parse("07/10/2018 18:00", CultureInfo.InvariantCulture),
-                DateTime.Parse("09/10/2018 17:54", CultureInfo.InvariantCulture)
+                DateTime.Parse("09/10/2018 17:54", CultureInfo.InvariantCulture),
             };
-            Action getTollFee = () => calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
+            Action getTollFee = () => calc.GetTollFee(new Vehicle(VehicleType.Private), differentDaysPassingDateTime);
 
             // Assert
             getTollFee.Should().Throw<ArgumentException>()

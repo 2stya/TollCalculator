@@ -52,8 +52,7 @@ namespace TollCalculator
                 int nextFee = GetTollFee(date, vehicle);
                 int tempFee = GetTollFee(tempInterval, vehicle);
 
-                long diffInMillies = date.Millisecond - tempInterval.Millisecond;
-                long minutes = diffInMillies / 1000 / 60;
+                long minutes = (date.Hour - tempInterval.Hour) * 60 + date.Minute - tempInterval.Minute;
 
                 if (minutes <= 60)
                 {
@@ -72,12 +71,14 @@ namespace TollCalculator
                 else
                 {
                     totalFee += nextFee;
+                    tempInterval = date;
                 }
 
                 if (totalFee > maxTollFee)
                 {
                     return maxTollFee;
                 }
+
             }
             
             return totalFee;
