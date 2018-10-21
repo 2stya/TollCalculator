@@ -46,27 +46,16 @@ namespace TollCalculator
             //RemoveLessThanHourDatetimes();
 
             DateTime tempInterval = dates[0];
-            int totalFee = 0;
+            int totalFee = GetTollFee(tempInterval, vehicle);
             foreach (DateTime date in dates)
             {
                 int nextFee = GetTollFee(date, vehicle);
-                int tempFee = GetTollFee(tempInterval, vehicle);
 
                 long minutes = (date.Hour - tempInterval.Hour) * 60 + date.Minute - tempInterval.Minute;
 
                 if (minutes <= 60)
                 {
-                    if (totalFee > 0)
-                    {
-                        totalFee -= tempFee;
-                    }
-
-                    if (nextFee >= tempFee)
-                    {
-                        tempFee = nextFee;
-                    }
-
-                    totalFee += tempFee;
+                    continue;
                 }
                 else
                 {
@@ -74,11 +63,10 @@ namespace TollCalculator
                     tempInterval = date;
                 }
 
-                if (totalFee > maxTollFee)
+                if (totalFee >= maxTollFee)
                 {
                     return maxTollFee;
                 }
-
             }
             
             return totalFee;
@@ -107,6 +95,7 @@ namespace TollCalculator
             return GetHourlyTollFee(date.Hour, date.Minute);
         }
 
+        //TODO: Use TimeSpans to store time intervals
         private static int GetHourlyTollFee(int hour, int minute)
         {
             switch (hour)
