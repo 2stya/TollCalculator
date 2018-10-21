@@ -35,21 +35,23 @@ namespace TollCalculator
                 throw new ArgumentException("No datetimes detected for vehicle");
             }
 
+            SortDateTimeAscending(dates);
+
             if (!IsSameDate(dates))
             {
                 throw new ArgumentException("Only one date should be presented to calculate toll fee.");
             }
 
-            SortDateTimeAscending(dates);
+            //RemoveLessThanHourDatetimes();
 
-            DateTime intervalStart = dates[0];
+            DateTime tempInterval = dates[0];
             int totalFee = 0;
             foreach (DateTime date in dates)
             {
                 int nextFee = GetTollFee(date, vehicle);
-                int tempFee = GetTollFee(intervalStart, vehicle);
+                int tempFee = GetTollFee(tempInterval, vehicle);
 
-                long diffInMillies = date.Millisecond - intervalStart.Millisecond;
+                long diffInMillies = date.Millisecond - tempInterval.Millisecond;
                 long minutes = diffInMillies / 1000 / 60;
 
                 if (minutes <= 60)
@@ -73,7 +75,7 @@ namespace TollCalculator
             }
             if (totalFee > 60)
             {
-                totalFee = 60;
+                return 60;
             }
 
             return totalFee;
