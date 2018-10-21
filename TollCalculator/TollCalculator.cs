@@ -9,6 +9,7 @@ namespace TollCalculator
     public class TollCalculator
     {
         private readonly TollFreeDaysProvider _freeDaysProvider;
+        const int maxTollFee = 60;
 
         public TollCalculator(TollFreeDaysProvider freeDaysProvider)
         {
@@ -73,9 +74,9 @@ namespace TollCalculator
                     totalFee += nextFee;
                 }
 
-                if (totalFee > 60)
+                if (totalFee > maxTollFee)
                 {
-                    return 60;
+                    return maxTollFee;
                 }
             }
             
