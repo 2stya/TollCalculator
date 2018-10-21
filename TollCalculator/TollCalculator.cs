@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using TollCalculator.CalendarHelper;
 using TollCalculator.Vehicles;
 
@@ -10,8 +12,9 @@ namespace TollCalculator
 
         public TollCalculator(TollFreeDaysProvider freeDaysProvider)
         {
-            _freeDaysProvider = freeDaysProvider ?? new SwedenTollFreeDaysProvider();
+            _freeDaysProvider = freeDaysProvider ?? throw new ArgumentNullException(nameof(freeDaysProvider));
         }
+
         /**
      * Calculate the total toll fee for one day
      *
@@ -22,6 +25,23 @@ namespace TollCalculator
 
         public int GetTollFee(Vehicle vehicle, DateTime[] dates)
         {
+            if (vehicle == null)
+            {
+                throw new ArgumentNullException(nameof(vehicle));
+            }
+
+            if (dates == null || dates.Length == 0)
+            {
+                throw new ArgumentException("No datetimes detected for vehicle");
+            }
+
+            if (!IsSameDate(dates))
+            {
+                throw new ArgumentException("Only one date should be presented to calculate toll fee.");
+            }
+
+            SortDateTimeAscending(dates);
+
             DateTime intervalStart = dates[0];
             int totalFee = 0;
             foreach (DateTime date in dates)
@@ -57,6 +77,19 @@ namespace TollCalculator
             }
 
             return totalFee;
+        }
+
+        private IEnumerable<DateTime> SortDateTimeAscending(IEnumerable<DateTime> dates)
+        {
+            return dates.OrderBy(date => date);
+        }
+
+        private bool IsSameDate(IReadOnlyList<DateTime> dates)
+        {
+            DateTime firstDate = dates[0];
+            return dates.All(date => date.Year == firstDate.Year &&
+                                     date.Month == firstDate.Month &&
+                                     date.Day == firstDate.Day);
         }
 
         private int GetTollFee(DateTime date, Vehicle vehicle)
