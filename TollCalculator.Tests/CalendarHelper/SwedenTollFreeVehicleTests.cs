@@ -3,7 +3,7 @@ using NUnit.Framework;
 using TollCalculator.HourlyFee.TollFree;
 using TollCalculator.Vehicles;
 
-namespace TollCalculator.Tests
+namespace TollCalculator.Tests.CalendarHelper
 {
     [TestFixture]
     public class SwedenTollFreeVehicleTests
