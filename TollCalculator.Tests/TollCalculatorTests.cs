@@ -5,6 +5,8 @@ using NUnit.Framework;
 using TollCalculator.CalendarHelper;
 using TollCalculator.Vehicles;
 
+        //TODO Change parse to year, month, day, hour, minute, second
+
 namespace TollCalculator.Tests
 {
     [TestFixture]
@@ -21,16 +23,16 @@ namespace TollCalculator.Tests
         }
 
         [Test]
-        [TestCase("07/10/2018 06:00")]
-        [TestCase("07/10/2018 06:05")]
-        [TestCase("07/10/2018 06:29")]
-        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom600To629AM_Returns9(string passingDateTime)
+        [TestCase(2018, 07, 10, 06, 00, 00)]
+        [TestCase(2018, 07, 10, 06, 05, 00)]
+        [TestCase(2018, 07, 10, 06, 29, 59)]
+        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom600To629AM_Returns9(int year, int month, int day, int hour, int minute, int second)
         {
             // Arrange
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = { DateTime.Parse(passingDateTime, CultureInfo.InvariantCulture) };
+            DateTime[] oncePassingDateTime = { new DateTime(year, month, day, hour, minute, second) };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
 
             // Assert
@@ -38,16 +40,16 @@ namespace TollCalculator.Tests
         }
 
         [Test]
-        [TestCase("07/10/2018 06:30")]
-        [TestCase("07/10/2018 06:44")]
-        [TestCase("07/10/2018 06:59")]
-        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom630To659AM_Returns16(string passingDateTime)
+        [TestCase(2018, 07, 10, 06, 30, 00)]
+        [TestCase(2018, 07, 10, 06, 44, 00)]
+        [TestCase(2018, 07, 10, 06, 59, 59)]
+        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom630To659AM_Returns16(int year, int month, int day, int hour, int minute, int second)
         {
             // Arrange
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = { DateTime.Parse(passingDateTime, CultureInfo.InvariantCulture) };
+            DateTime[] oncePassingDateTime = { new DateTime(year, month, day, hour, minute, second) };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
 
             // Assert
@@ -55,16 +57,16 @@ namespace TollCalculator.Tests
         }
 
         [Test]
-        [TestCase("07/10/2018 07:00")]
-        [TestCase("07/10/2018 07:54")]
-        [TestCase("07/10/2018 07:59")]
-        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom700To759AM_Returns22(string passingDateTime)
+        [TestCase(2018, 07, 10, 07, 00, 00)]
+        [TestCase(2018, 07, 10, 07, 54, 00)]
+        [TestCase(2018, 07, 10, 07, 59, 59)]
+        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom700To759AM_Returns22(int year, int month, int day, int hour, int minute, int second)
         {
             // Arrange
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = { DateTime.Parse(passingDateTime, CultureInfo.InvariantCulture) };
+            DateTime[] oncePassingDateTime = { new DateTime(year, month, day, hour, minute, second) };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
 
             // Assert
@@ -72,16 +74,16 @@ namespace TollCalculator.Tests
         }
 
         [Test]
-        [TestCase("07/10/2018 08:00")]
-        [TestCase("07/10/2018 08:25")]
-        [TestCase("07/10/2018 08:29")]
-        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom800To829AM_Returns16(string passingDateTime)
+        [TestCase(2018, 07, 10, 08, 00, 00)]
+        [TestCase(2018, 07, 10, 08, 25, 00)]
+        [TestCase(2018, 07, 10, 08, 29, 59)]
+        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom800To829AM_Returns16(int year, int month, int day, int hour, int minute, int second)
         {
             // Arrange
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = { DateTime.Parse(passingDateTime, CultureInfo.InvariantCulture) };
+            DateTime[] oncePassingDateTime = { new DateTime(year, month, day, hour, minute, second) };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
 
             // Assert
@@ -89,16 +91,16 @@ namespace TollCalculator.Tests
         }
 
         [Test]
-        [TestCase("07/10/2018 08:30")]
-        [TestCase("07/10/2018 12:00")]
-        [TestCase("07/10/2018 14:59")]
-        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom830To1459AM_Returns9(string passingDateTime)
+        [TestCase(2018, 07, 10, 08, 30, 00)]
+        [TestCase(2018, 07, 10, 12, 00, 00)]
+        [TestCase(2018, 07, 10, 14, 59, 59)]
+        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom830To1459AM_Returns9(int year, int month, int day, int hour, int minute, int second)
         {
             // Arrange
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = { DateTime.Parse(passingDateTime, CultureInfo.InvariantCulture) };
+            DateTime[] oncePassingDateTime = { new DateTime(year, month, day, hour, minute, second) };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
 
             // Assert
@@ -106,16 +108,16 @@ namespace TollCalculator.Tests
         }
 
         [Test]
-        [TestCase("07/10/2018 15:00")]
-        [TestCase("07/10/2018 15:10")]
-        [TestCase("07/10/2018 15:29")]
-        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom1500To1529_Returns16(string passingDateTime)
+        [TestCase(2018, 07, 10, 15, 00, 00)]
+        [TestCase(2018, 07, 10, 15, 10, 00)]
+        [TestCase(2018, 07, 10, 15, 29, 59)]
+        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom1500To1529_Returns16(int year, int month, int day, int hour, int minute, int second)
         {
             // Arrange
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = { DateTime.Parse(passingDateTime, CultureInfo.InvariantCulture) };
+            DateTime[] oncePassingDateTime = { new DateTime(year, month, day, hour, minute, second) };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
 
             // Assert
@@ -123,16 +125,16 @@ namespace TollCalculator.Tests
         }
 
         [Test]
-        [TestCase("07/10/2018 15:30")]
-        [TestCase("07/10/2018 15:59")]
-        [TestCase("07/10/2018 16:59")]
-        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom1530To1659_Returns22(string passingDateTime)
+        [TestCase(2018, 07, 10, 15, 30, 00)]
+        [TestCase(2018, 07, 10, 15, 59, 00)]
+        [TestCase(2018, 07, 10, 16, 59, 59)]
+        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom1530To1659_Returns22(int year, int month, int day, int hour, int minute, int second)
         {
             // Arrange
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = { DateTime.Parse(passingDateTime, CultureInfo.InvariantCulture) };
+            DateTime[] oncePassingDateTime = { new DateTime(year, month, day, hour, minute, second) };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
 
             // Assert
@@ -140,16 +142,16 @@ namespace TollCalculator.Tests
         }
 
         [Test]
-        [TestCase("07/10/2018 17:00")]
-        [TestCase("07/10/2018 17:09")]
-        [TestCase("07/10/2018 17:59")]
-        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom1700To1759_Returns16(string passingDateTime)
+        [TestCase(2018, 07, 10, 17, 00, 00)]
+        [TestCase(2018, 07, 10, 17, 09, 00)]
+        [TestCase(2018, 07, 10, 17, 59, 59)]
+        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom1700To1759_Returns16(int year, int month, int day, int hour, int minute, int second)
         {
             // Arrange
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = { DateTime.Parse(passingDateTime, CultureInfo.InvariantCulture) };
+            DateTime[] oncePassingDateTime = { new DateTime(year, month, day, hour, minute, second) };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
 
             // Assert
@@ -157,16 +159,16 @@ namespace TollCalculator.Tests
         }
 
         [Test]
-        [TestCase("07/10/2018 18:00")]
-        [TestCase("07/10/2018 18:13")]
-        [TestCase("07/10/2018 18:29")]
-        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom1800To1829_Returns9(string passingDateTime)
+        [TestCase(2018, 07, 10, 18, 00, 00)]
+        [TestCase(2018, 07, 10, 18, 13, 00)]
+        [TestCase(2018, 07, 10, 18, 29, 59)]
+        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom1800To1829_Returns9(int year, int month, int day, int hour, int minute, int second)
         {
             // Arrange
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = { DateTime.Parse(passingDateTime, CultureInfo.InvariantCulture) };
+            DateTime[] oncePassingDateTime = { new DateTime(year, month, day, hour, minute, second) };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
 
             // Assert
@@ -174,16 +176,16 @@ namespace TollCalculator.Tests
         }
 
         [Test]
-        [TestCase("07/10/2018 18:30")]
-        [TestCase("07/10/2018 00:00")]
-        [TestCase("07/10/2018 05:59")]
-        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom1830To0559_Returns0(string passingDateTime)
+        [TestCase(2018, 07, 10, 18, 30, 00)]
+        [TestCase(2018, 07, 10, 00, 00, 00)]
+        [TestCase(2018, 07, 10, 05, 59, 59)]
+        public void GetTollFee_WhenOneTimePassedPrivateCarNotHolidayFrom1830To0559_Returns0(int year, int month, int day, int hour, int minute, int second)
         {
             // Arrange
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = { DateTime.Parse(passingDateTime, CultureInfo.InvariantCulture) };
+            DateTime[] oncePassingDateTime = { new DateTime(year, month, day, hour, minute, second) };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
 
             // Assert
@@ -227,21 +229,13 @@ namespace TollCalculator.Tests
             // Act
             DateTime[] oncePassingDateTime = 
             {
-                DateTime.Parse("07/10/2018 00:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 01:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 02:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 03:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 04:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 05:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 06:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 07:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 08:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 09:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 10:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 11:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 12:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 13:30", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 14:30", CultureInfo.InvariantCulture)
+                new DateTime(2018,07,10,06,30,00), 
+                new DateTime(2018,07,10,07,31,00), 
+                new DateTime(2018,07,10,08,32,00), 
+                new DateTime(2018,07,10,09,33,00), 
+                new DateTime(2018,07,10,10,34,00), 
+                new DateTime(2018,07,10,11,35,00), 
+                new DateTime(2018,07,10,12,36,00)
             };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), oncePassingDateTime);
 
@@ -257,11 +251,11 @@ namespace TollCalculator.Tests
 
             // Act
             DateTime[] twicePassingDateTime = {
-                DateTime.Parse("07/10/2018 09:00", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 09:54", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 10:01", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 10:06", CultureInfo.InvariantCulture),
-                DateTime.Parse("07/10/2018 11:06", CultureInfo.InvariantCulture),
+                new DateTime(2018,07,10,09,00,00),
+                new DateTime(2018,07,10,09,54,00),
+                new DateTime(2018,07,10,10,01,00),
+                new DateTime(2018,07,10,10,06,00),
+                new DateTime(2018,07,10,11,06,00)
             };
             int tollFee = calc.GetTollFee(new Vehicle(VehicleType.Private), twicePassingDateTime);
 
@@ -277,8 +271,8 @@ namespace TollCalculator.Tests
 
             // Act
             DateTime[] differentDaysPassingDateTime = {
-                DateTime.Parse("07/10/2018 18:00", CultureInfo.InvariantCulture),
-                DateTime.Parse("09/10/2018 17:54", CultureInfo.InvariantCulture),
+                new DateTime(2018,07,10,18,00,00),
+                new DateTime(2018,08,10,17,54,00)
             };
             Action getTollFee = () => calc.GetTollFee(new Vehicle(VehicleType.Private), differentDaysPassingDateTime);
 
@@ -295,8 +289,8 @@ namespace TollCalculator.Tests
 
             // Act
             DateTime[] oncePassingDateTime = {
-                DateTime.Parse("07/10/2018 18:00", CultureInfo.InvariantCulture),
-                DateTime.Parse("09/10/2018 17:54", CultureInfo.InvariantCulture)
+                new DateTime(2018,07,10,18,00,00),
+                new DateTime(2018,08,10,17,54,00)
             };
             Action getTollFee = () => calc.GetTollFee(null, oncePassingDateTime);
 
@@ -307,6 +301,21 @@ namespace TollCalculator.Tests
 
         [Test]
         public void GetTollFee_WhenDatesIsNull_Throws()
+        {
+            // Arrange
+            TollCalculator calc = CreateSwedenTollCalculator();
+
+            // Act
+            DateTime[] oncePassingDateTime = { };
+            Action getTollFee = () => calc.GetTollFee(new Vehicle(VehicleType.Private), null);
+
+            // Assert
+            getTollFee.Should().Throw<ArgumentException>()
+                .WithMessage("No datetimes detected for vehicle");
+        }
+
+        [Test]
+        public void GetTollFee_WhenDatesIsEmpty_Throws()
         {
             // Arrange
             TollCalculator calc = CreateSwedenTollCalculator();
