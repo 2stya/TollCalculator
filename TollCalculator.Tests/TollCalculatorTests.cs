@@ -3,9 +3,10 @@ using System.Globalization;
 using FluentAssertions;
 using NUnit.Framework;
 using TollCalculator.CalendarHelper;
+using TollCalculator.HourlyFeeHelper;
 using TollCalculator.Vehicles;
 
-        //TODO Change parse to year, month, day, hour, minute, second
+//TODO Change parse to year, month, day, hour, minute, second
 
 namespace TollCalculator.Tests
 {
@@ -13,20 +14,10 @@ namespace TollCalculator.Tests
     public class TollCalculatorTests
     {
         [Test]
-        public void Ctor_WhenTollFreeProviderIsNull_Throws()
-        {
-            // Arrange
-            Action calcWithNullTollFreeProvider = () => new TollCalculator(null, new SwedenHourlyFee());
-
-            // Act & Assert
-            calcWithNullTollFreeProvider.Should().Throw<ArgumentNullException>().WithMessage("Value cannot be null.\nParameter name: freeDaysProvider");
-        }
-
-        [Test]
         public void Ctor_WhenHourlyFeeProviderIsNull_Throws()
         {
             // Arrange
-            Action calcWithNullTollFreeProvider = () => new TollCalculator(new SwedenTollFreeDaysProvider(), null);
+            Action calcWithNullTollFreeProvider = () => new TollCalculator(null);
 
             // Act & Assert
             calcWithNullTollFreeProvider.Should().Throw<ArgumentNullException>().WithMessage("Value cannot be null.\nParameter name: hourlyFeeProvider");
@@ -340,7 +331,7 @@ namespace TollCalculator.Tests
 
         private static TollCalculator CreateSwedenTollCalculator()
         {
-            return new TollCalculator(new SwedenTollFreeDaysProvider(), new SwedenHourlyFee());
+            return new TollCalculator(new SwedenHourlyFee(new SwedenTollFreeDaysProvider()));
         }
     }
 }

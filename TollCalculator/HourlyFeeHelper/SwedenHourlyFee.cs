@@ -1,9 +1,17 @@
 ﻿using System;
+using TollCalculator.CalendarHelper;
 
-namespace TollCalculator
+namespace TollCalculator.HourlyFeeHelper
 {
     public class SwedenHourlyFee : IHourlyFee
     {
+        private readonly TollFreeDaysProvider _freeDaysProvider;
+
+        public SwedenHourlyFee(TollFreeDaysProvider freeDaysProvider)
+        {
+            _freeDaysProvider = freeDaysProvider ?? throw new ArgumentNullException(nameof(freeDaysProvider));
+        }
+
         public int GetHourlyFee(DateTime dateTime)
         {
             switch (dateTime.Hour)

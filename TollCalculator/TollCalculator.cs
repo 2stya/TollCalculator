@@ -1,23 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TollCalculator.CalendarHelper;
+using TollCalculator.HourlyFeeHelper;
 using TollCalculator.Vehicles;
 
 namespace TollCalculator
 {
     public class TollCalculator
     {
-        private readonly TollFreeDaysProvider _freeDaysProvider;
-        private readonly IHourlyFee _hourlyFeeProvider;
-        const int maxTollFee = 60;
-
-        public TollCalculator(TollFreeDaysProvider freeDaysProvider, IHourlyFee hourlyFeeProvider)
-        {
-            _freeDaysProvider = freeDaysProvider ?? throw new ArgumentNullException(nameof(freeDaysProvider));
-            _hourlyFeeProvider = hourlyFeeProvider ?? throw new ArgumentNullException(nameof(hourlyFeeProvider));
-        }
-
         /**
      * Calculate the total toll fee for one day
      *
@@ -25,6 +15,16 @@ namespace TollCalculator
      * @param dates   - date and time of all passes on one day
      * @return - the total toll fee for that day
      */
+
+        private readonly IHourlyFee _hourlyFeeProvider;
+
+        const int maxTollFee = 60;
+
+        public TollCalculator(IHourlyFee hourlyFeeProvider)
+        {
+            _hourlyFeeProvider = hourlyFeeProvider ?? throw new ArgumentNullException(nameof(hourlyFeeProvider));
+        }
+
 
         public int GetTollFee(Vehicle vehicle, DateTime[] dates)
         {
@@ -98,35 +98,5 @@ namespace TollCalculator
         }
 
         //TODO: Use TimeSpans to store time intervals
-        //private static int GetHourlyFee(int hour, int minute)
-        //{
-        //    switch (hour)
-        //    {
-        //        case 6 when minute <= 29:
-        //        case 8 when minute >= 30:
-        //        case 9:
-        //        case 10:
-        //        case 11:
-        //        case 12:
-        //        case 13:
-        //        case 14:
-        //        case 18 when minute <= 29:
-        //            return 9;
-
-        //        case 6 when minute >= 30:
-        //        case 8 when minute <= 29:
-        //        case 15 when minute <= 29:
-        //        case 17 when minute <= 59:
-        //            return 16;
-
-        //        case 7:
-        //        case 15 when minute >= 30:
-        //        case 16 when minute <= 59:
-        //            return 22;
-
-        //        default:
-        //            return 0;
-        //    }
-        //}
     }
 }
