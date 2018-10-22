@@ -9,11 +9,13 @@ namespace TollCalculator
     public class TollCalculator
     {
         private readonly TollFreeDaysProvider _freeDaysProvider;
+        private readonly IHourlyFee _hourlyFeeProvider;
         const int maxTollFee = 60;
 
-        public TollCalculator(TollFreeDaysProvider freeDaysProvider)
+        public TollCalculator(TollFreeDaysProvider freeDaysProvider, IHourlyFee hourlyFeeProvider)
         {
             _freeDaysProvider = freeDaysProvider ?? throw new ArgumentNullException(nameof(freeDaysProvider));
+            _hourlyFeeProvider = hourlyFeeProvider ?? throw new ArgumentNullException(nameof(hourlyFeeProvider));
         }
 
         /**
@@ -92,39 +94,39 @@ namespace TollCalculator
                 return 0;
             }
 
-            return GetHourlyTollFee(date.Hour, date.Minute);
+            return _hourlyFeeProvider.GetHourlyFee(date);
         }
 
         //TODO: Use TimeSpans to store time intervals
-        private static int GetHourlyTollFee(int hour, int minute)
-        {
-            switch (hour)
-            {
-                case 6 when minute <= 29:
-                case 8 when minute >= 30:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 18 when minute <= 29:
-                    return 9;
+        //private static int GetHourlyFee(int hour, int minute)
+        //{
+        //    switch (hour)
+        //    {
+        //        case 6 when minute <= 29:
+        //        case 8 when minute >= 30:
+        //        case 9:
+        //        case 10:
+        //        case 11:
+        //        case 12:
+        //        case 13:
+        //        case 14:
+        //        case 18 when minute <= 29:
+        //            return 9;
 
-                case 6 when minute >= 30:
-                case 8 when minute <= 29:
-                case 15 when minute <= 29:
-                case 17 when minute <= 59:
-                    return 16;
+        //        case 6 when minute >= 30:
+        //        case 8 when minute <= 29:
+        //        case 15 when minute <= 29:
+        //        case 17 when minute <= 59:
+        //            return 16;
 
-                case 7:
-                case 15 when minute >= 30:
-                case 16 when minute <= 59:
-                    return 22;
+        //        case 7:
+        //        case 15 when minute >= 30:
+        //        case 16 when minute <= 59:
+        //            return 22;
 
-                default:
-                    return 0;
-            }
-        }
+        //        default:
+        //            return 0;
+        //    }
+        //}
     }
 }

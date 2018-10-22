@@ -16,10 +16,20 @@ namespace TollCalculator.Tests
         public void Ctor_WhenTollFreeProviderIsNull_Throws()
         {
             // Arrange
-            Action calcWithNullTollFreeProvider = () => new TollCalculator(null);
+            Action calcWithNullTollFreeProvider = () => new TollCalculator(null, new SwedenHourlyFee());
 
             // Act & Assert
             calcWithNullTollFreeProvider.Should().Throw<ArgumentNullException>().WithMessage("Value cannot be null.\nParameter name: freeDaysProvider");
+        }
+
+        [Test]
+        public void Ctor_WhenHourlyFeeProviderIsNull_Throws()
+        {
+            // Arrange
+            Action calcWithNullTollFreeProvider = () => new TollCalculator(new SwedenTollFreeDaysProvider(), null);
+
+            // Act & Assert
+            calcWithNullTollFreeProvider.Should().Throw<ArgumentNullException>().WithMessage("Value cannot be null.\nParameter name: hourlyFeeProvider");
         }
 
         [Test]
@@ -330,7 +340,7 @@ namespace TollCalculator.Tests
 
         private static TollCalculator CreateSwedenTollCalculator()
         {
-            return new TollCalculator(new SwedenTollFreeDaysProvider());
+            return new TollCalculator(new SwedenTollFreeDaysProvider(), new SwedenHourlyFee());
         }
     }
 }
