@@ -331,7 +331,7 @@ namespace TollCalculator.Tests
 
         private static TollCalculator CreateSwedenTollCalculator()
         {
-            return new TollCalculator(new SwedenHourlyFee(new SwedenTollFreeDaysProvider()));
+            return new TollCalculator(new SwedenHourlyFee(new SwedenTollFreeDays()));
         }
     }
 }

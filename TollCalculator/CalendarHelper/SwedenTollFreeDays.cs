@@ -2,7 +2,7 @@
 
 namespace TollCalculator.CalendarHelper
 {
-    public class SwedenTollFreeDaysProvider : TollFreeDaysProvider
+    public class SwedenTollFreeDays : TollFreeDays
     {
         public override bool IsTollFree(DateTime date)
         {

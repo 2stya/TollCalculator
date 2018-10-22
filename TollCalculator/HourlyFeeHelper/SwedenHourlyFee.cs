@@ -6,16 +6,16 @@ namespace TollCalculator.HourlyFeeHelper
 {
     public class SwedenHourlyFee : IHourlyFee //TODO Use data structure to store TimeSpans and hourly price
     {
-        private readonly TollFreeDaysProvider _freeDaysProvider;
+        private readonly TollFreeDays _freeDays;
 
-        public SwedenHourlyFee(TollFreeDaysProvider freeDaysProvider)
+        public SwedenHourlyFee(TollFreeDays freeDays)
         {
-            _freeDaysProvider = freeDaysProvider ?? throw new ArgumentNullException(nameof(freeDaysProvider));
+            _freeDays = freeDays ?? throw new ArgumentNullException(nameof(freeDays));
         }
 
         public int GetHourlyFee(DateTime dateTime, Vehicle vehicle)
         {
-            if (_freeDaysProvider.IsTollFree(dateTime) || vehicle.IsTollFree)
+            if (_freeDays.IsTollFree(dateTime) || vehicle.IsTollFree)
             {
                 return 0;
             }

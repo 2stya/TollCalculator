@@ -13,10 +13,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime newYear = new DateTime(2010, 1, 1);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(newYear).Should().BeTrue();
+            tollFreeDays.IsTollFree(newYear).Should().BeTrue();
         }
 
         [Test]
@@ -24,10 +24,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime epiphany = new DateTime(2012, 1, 6);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(epiphany).Should().BeTrue();
+            tollFreeDays.IsTollFree(epiphany).Should().BeTrue();
         }
 
         [Test]
@@ -37,10 +37,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime goodFriday = new DateTime(year, month, day);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(goodFriday).Should().BeTrue();
+            tollFreeDays.IsTollFree(goodFriday).Should().BeTrue();
         }
 
         [Test]
@@ -50,10 +50,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime easterMonday = new DateTime(year, month, day);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(easterMonday).Should().BeTrue();
+            tollFreeDays.IsTollFree(easterMonday).Should().BeTrue();
         }
 
         [Test]
@@ -63,10 +63,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime ascensionDay = new DateTime(year, month, day);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(ascensionDay).Should().BeTrue();
+            tollFreeDays.IsTollFree(ascensionDay).Should().BeTrue();
         }
 
         [Test]
@@ -76,10 +76,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime internationalWorkersDay = new DateTime(year, month, day);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(internationalWorkersDay).Should().BeTrue();
+            tollFreeDays.IsTollFree(internationalWorkersDay).Should().BeTrue();
         }
 
         [Test]
@@ -89,10 +89,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime nationalDayOfSweden = new DateTime(year, month, day);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(nationalDayOfSweden).Should().BeTrue();
+            tollFreeDays.IsTollFree(nationalDayOfSweden).Should().BeTrue();
         }
 
         [Test]
@@ -102,10 +102,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime christmasEve = new DateTime(year, month, day);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(christmasEve).Should().BeTrue();
+            tollFreeDays.IsTollFree(christmasEve).Should().BeTrue();
         }
 
         [Test]
@@ -115,10 +115,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime christmasDay = new DateTime(year, month, day);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(christmasDay).Should().BeTrue();
+            tollFreeDays.IsTollFree(christmasDay).Should().BeTrue();
         }
 
         [Test]
@@ -128,10 +128,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime secondDayOfChristmas = new DateTime(year, month, day);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(secondDayOfChristmas).Should().BeTrue();
+            tollFreeDays.IsTollFree(secondDayOfChristmas).Should().BeTrue();
         }
 
         [Test]
@@ -141,10 +141,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime secondDayOfChristmas = new DateTime(year, month, day);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(secondDayOfChristmas).Should().BeTrue();
+            tollFreeDays.IsTollFree(secondDayOfChristmas).Should().BeTrue();
         }
 
         [Test]
@@ -154,10 +154,10 @@ namespace TollCalculator.Tests.CalendarHelper
         {
             // Arrange
             DateTime secondDayOfChristmas = new DateTime(year, month, day);
-            SwedenTollFreeDaysProvider tollFreeDaysProvider = new SwedenTollFreeDaysProvider();
+            SwedenTollFreeDays tollFreeDays = new SwedenTollFreeDays();
 
             // Act & Assert
-            tollFreeDaysProvider.IsTollFree(secondDayOfChristmas).Should().BeTrue();
+            tollFreeDays.IsTollFree(secondDayOfChristmas).Should().BeTrue();
         }
     }
 }
