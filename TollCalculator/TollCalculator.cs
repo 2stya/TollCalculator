@@ -89,14 +89,7 @@ namespace TollCalculator
 
         private int GetTollFee(DateTime date, Vehicle vehicle)
         {
-            if (_freeDaysProvider.IsTollFree(date) || vehicle.IsTollFree)
-            {
-                return 0;
-            }
-
-            return _hourlyFeeProvider.GetHourlyFee(date);
+            return _hourlyFeeProvider.GetHourlyFee(date, vehicle);
         }
-
-        //TODO: Use TimeSpans to store time intervals
     }
 }
