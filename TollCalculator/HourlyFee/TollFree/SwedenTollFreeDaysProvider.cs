@@ -2,9 +2,9 @@
 
 namespace TollCalculator.HourlyFee.TollFree
 {
-    public class SwedenTollFreeDaysProvider : TollFreeDays
+    public class SwedenTollFreeDaysProvider : ITollFreeDays
     {
-        public override bool IsTollFree(DateTime date)
+        public bool IsTollFree(DateTime date)
         {
             return IsWeekend(date) || IsPublicHoliday(date);
         }

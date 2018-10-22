@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HourlyFee\TollFree\ITollFreeVehicleProvider.cs" />
-    <Compile Include="HourlyFee\TollFree\TollFreeDays.cs" />
+    <Compile Include="HourlyFee\TollFree\ITollFreeDays.cs" />
     <Compile Include="HourlyFee\TollFree\SwedenTollFreeDaysProvider.cs" />
     <Compile Include="HourlyFee\IHourlyFee.cs" />
     <Compile Include="HourlyFee\TollFree\SwedenTollFreeVehicleProvider.cs" />

@@ -8,10 +8,10 @@ namespace TollCalculator.HourlyFee
         
         //TODO Use data structure to store TimeSpans and hourly price
     {
-        private readonly TollFreeDays _freeDays;
+        private readonly ITollFreeDays _freeDays;
         private readonly ITollFreeVehicleProvider _freeVehicleProvider;
 
-        public SwedenHourlyFee(TollFreeDays freeDaysProvider, ITollFreeVehicleProvider freeVehicleProvider)
+        public SwedenHourlyFee(ITollFreeDays freeDaysProvider, ITollFreeVehicleProvider freeVehicleProvider)
         {
             _freeDays = freeDaysProvider ?? throw new ArgumentNullException(nameof(freeDaysProvider));
             _freeVehicleProvider = freeVehicleProvider ?? throw new ArgumentNullException(nameof(freeVehicleProvider));
