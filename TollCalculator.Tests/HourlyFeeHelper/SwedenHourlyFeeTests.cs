@@ -15,7 +15,7 @@ namespace TollCalculator.Tests.HourlyFeeHelper
             Action hourlyFeeWithNullTollFreeDaysProvider = () => new SwedenHourlyFee(null);
 
             // Act & Assert
-            hourlyFeeWithNullTollFreeDaysProvider.Should().Throw<ArgumentNullException>().WithMessage("Value cannot be null.\nParameter name: freeDaysProvider");
+            hourlyFeeWithNullTollFreeDaysProvider.Should().Throw<ArgumentNullException>().WithMessage("Value cannot be null.\nParameter name: freeDays");
         }
     }
 }
