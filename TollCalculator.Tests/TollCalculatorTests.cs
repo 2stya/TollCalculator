@@ -306,8 +306,8 @@ namespace TollCalculator.Tests
             TollCalculator calc = CreateSwedenTollCalculator();
 
             // Act
-            DateTime[] oncePassingDateTime = { };
-            Action getTollFee = () => calc.GetTollFee(new Vehicle(VehicleType.Private), null);
+            DateTime[] emptyDateTime = { };
+            Action getTollFee = () => calc.GetTollFee(new Vehicle(VehicleType.Private), emptyDateTime);
 
             // Assert
             getTollFee.Should().Throw<ArgumentException>()
