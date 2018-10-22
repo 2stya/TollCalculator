@@ -1,21 +1,25 @@
 ﻿using System;
-using TollCalculator.CalendarHelper;
+using TollCalculator.HourlyFee.TollFree;
 using TollCalculator.Vehicles;
 
-namespace TollCalculator.HourlyFeeHelper
+namespace TollCalculator.HourlyFee
 {
-    public class SwedenHourlyFee : IHourlyFee //TODO Use data structure to store TimeSpans and hourly price
+    public class SwedenHourlyFee : IHourlyFee 
+        
+        //TODO Use data structure to store TimeSpans and hourly price
     {
         private readonly TollFreeDays _freeDays;
+        private readonly ITollFreeVehicleProvider _freeVehicleProvider;
 
-        public SwedenHourlyFee(TollFreeDays freeDays)
+        public SwedenHourlyFee(TollFreeDays freeDaysProvider, ITollFreeVehicleProvider freeVehicleProvider)
         {
-            _freeDays = freeDays ?? throw new ArgumentNullException(nameof(freeDays));
+            _freeDays = freeDaysProvider ?? throw new ArgumentNullException(nameof(freeDaysProvider));
+            _freeVehicleProvider = freeVehicleProvider ?? throw new ArgumentNullException(nameof(freeVehicleProvider));
         }
 
         public int GetHourlyFee(DateTime dateTime, Vehicle vehicle)
         {
-            if (_freeDays.IsTollFree(dateTime) || vehicle.IsTollFree)
+            if (_freeDays.IsTollFree(dateTime) || _freeVehicleProvider.IsTollFree(vehicle.VehicleType))
             {
                 return 0;
             }

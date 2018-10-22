@@ -41,11 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalendarHelper\TollFreeDays.cs" />
-    <Compile Include="CalendarHelper\SwedenTollFreeDays.cs" />
-    <Compile Include="HourlyFeeHelper\IHourlyFee.cs" />
+    <Compile Include="HourlyFee\TollFree\ITollFreeVehicleProvider.cs" />
+    <Compile Include="HourlyFee\TollFree\TollFreeDays.cs" />
+    <Compile Include="HourlyFee\TollFree\SwedenTollFreeDaysProvider.cs" />
+    <Compile Include="HourlyFee\IHourlyFee.cs" />
+    <Compile Include="HourlyFee\TollFree\SwedenTollFreeVehicleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="HourlyFeeHelper\SwedenHourlyFee.cs" />
+    <Compile Include="HourlyFee\SwedenHourlyFee.cs" />
     <Compile Include="TollCalculator.cs" />
     <Compile Include="Vehicles\Vehicle.cs" />
   </ItemGroup>

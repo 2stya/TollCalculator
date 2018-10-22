@@ -2,8 +2,8 @@
 using System.Globalization;
 using FluentAssertions;
 using NUnit.Framework;
-using TollCalculator.CalendarHelper;
-using TollCalculator.HourlyFeeHelper;
+using TollCalculator.HourlyFee;
+using TollCalculator.HourlyFee.TollFree;
 using TollCalculator.Vehicles;
 
 //TODO Change parse to year, month, day, hour, minute, second
@@ -331,7 +331,7 @@ namespace TollCalculator.Tests
 
         private static TollCalculator CreateSwedenTollCalculator()
         {
-            return new TollCalculator(new SwedenHourlyFee(new SwedenTollFreeDays()));
+            return new TollCalculator(new SwedenHourlyFee(new SwedenTollFreeDaysProvider(), new SwedenTollFreeVehicleProvider()));
         }
     }
 }

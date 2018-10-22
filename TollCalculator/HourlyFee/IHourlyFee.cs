@@ -1,7 +1,7 @@
 ﻿using System;
 using TollCalculator.Vehicles;
 
-namespace TollCalculator.HourlyFeeHelper
+namespace TollCalculator.HourlyFee
 {
     public interface IHourlyFee
     {

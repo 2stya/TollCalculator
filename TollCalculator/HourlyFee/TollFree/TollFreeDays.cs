@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TollCalculator.CalendarHelper
+namespace TollCalculator.HourlyFee.TollFree
 {
     public abstract class TollFreeDays
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace TollCalculator.CalendarHelper
+namespace TollCalculator.HourlyFee.TollFree
 {
-    public class SwedenTollFreeDays : TollFreeDays
+    public class SwedenTollFreeDaysProvider : TollFreeDays
     {
         public override bool IsTollFree(DateTime date)
         {
